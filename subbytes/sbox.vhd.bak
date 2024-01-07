@@ -1,0 +1,17 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+	  
+entity subbytes is
+	port( inbyte:in std_logic_vector(7 downto 0);
+			outbyte: out std_logic_vector(7 downto 0);
+end subbytes;
+	  
+architecture bhv of subbytes is
+	signal tempbyte std_logic_vector(7 downto 0);
+	type ArrayType is array (0 to 255) of STD_LOGIC_VECTOR(7 downto 0);
+	begin
+		
+		
+		
+end bhv;

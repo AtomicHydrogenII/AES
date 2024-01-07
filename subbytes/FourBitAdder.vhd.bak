@@ -1,0 +1,23 @@
+library ieee;
+use ieee.std_logic_1164.all;
+library work;
+use work.Gates.all;
+use work.MyXOR.all;
+
+entity FourBitAdder is
+	port(A0, A1, A2, A3, B0, B1, B2, B3, M: in std_logic; C, S0, S1, S2, S3: out std_logic);
+end entity FourBitAdder;
+
+architecture Struct of FourBitAdder is
+	signal F0, F1, F2, F3, C1, C2, C3: std_logic;
+	begin
+		XOR1: XORGate port map(A => B0, B => M, Y => F0);
+		XOR2: XORGate port map(A => B1, B => M, Y => F1);
+		XOR3: XORGate port map(A => B2, B => M, Y => F2);
+		XOR4: XORGate port map(A => B3, B => M, Y => F3);
+		FA1: FA port map(A => A0, B => F0, Cin => M , S => S0, Cout => C1 );
+		FA2: FA port map(A => A1, B => F1, Cin => C1, S => S1, Cout => C2 );
+		FA3: FA port map(A => A2, B => F2, Cin => C2, S => S2, Cout => C3 );
+		FA4: FA port map(A => A3, B => F3, Cin => C3, S => S3, Cout => C );
+		
+end Struct;
